@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SLDS AI Search Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+  <div class="container mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6 text-blue-800">Mississippi SLDS - Natural Language Search</h1>
+    <div class="bg-white p-6 rounded shadow">
+      <label for="query" class="block mb-2 text-lg font-semibold text-gray-700">Ask a question:</label>
+      <input id="query" type="text" class="w-full p-3 border border-gray-300 rounded mb-4" placeholder="e.g., Show me graduation trends by county in 2023" />
+      <button onclick="runSearch()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
+      <div id="result" class="mt-6 p-4 bg-gray-50 border border-gray-200 rounded text-gray-800 min-h-[80px]"></div>
+    </div>
+    <p class="mt-10 text-gray-500 text-sm">Demo powered by Gemini. For internal use only.</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
