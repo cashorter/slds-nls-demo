@@ -1,23 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Prototype natural-language search interface for education data exploration." />
   <title>SLDS AI Search Demo</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-  <div class="container mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold mb-6 text-blue-800">Mississippi SLDS - Natural Language Search</h1>
-    <div class="bg-white p-6 rounded shadow">
-      <label for="query" class="block mb-2 text-lg font-semibold text-gray-700">Ask a question:</label>
-      <input id="query" type="text" class="w-full p-3 border border-gray-300 rounded mb-4" placeholder="e.g., Show me graduation trends by county in 2023" />
-      <button onclick="runSearch()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
-      <div id="result" class="mt-6 p-4 bg-gray-50 border border-gray-200 rounded text-gray-800 min-h-[80px]"></div>
-    </div>
-    <p class="mt-10 text-gray-500 text-sm">Demo powered by Gemini. For internal use only.</p>
-  </div>
+  <main class="container mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-2 text-blue-800">Mississippi SLDS - Natural Language Search</h1>
+    <p class="text-gray-600 mb-6">A prototype interface for exploring education questions through a secured server-side AI integration.</p>
+
+    <section class="bg-white p-6 rounded shadow" aria-labelledby="search-heading">
+      <h2 id="search-heading" class="text-xl font-semibold mb-4 text-gray-800">Ask a question</h2>
+      <label for="query" class="block mb-2 text-lg font-semibold text-gray-700">Natural-language query</label>
+      <input id="query" type="text" maxlength="1000" class="w-full p-3 border border-gray-300 rounded mb-4" placeholder="e.g., Show me graduation trends by county in 2023" />
+      <button id="search-button" type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
+      <div id="result" class="mt-6 p-4 bg-gray-50 border border-gray-200 rounded text-gray-800 min-h-[80px]" aria-live="polite"></div>
+    </section>
+
+    <p class="mt-10 text-gray-500 text-sm">Prototype demonstration. API credentials remain server-side and are never sent to the browser.</p>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
