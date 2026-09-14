@@ -1,33 +1,31 @@
-
-const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY_HERE'; // <-- Replace with your key
-const useMockResults = false;
-
 async function runSearch() {
-  const query = document.getElementById("query").value;
-  const resultBox = document.getElementById("result");
-  resultBox.innerHTML = "<em>Loading...</em>";
+  const queryInput = document.getElementById('query');
+  const resultBox = document.getElementById('result');
+  const query = queryInput.value.trim();
 
-  if (useMockResults) {
-    setTimeout(() => {
-      resultBox.innerHTML = "Mock result: Graduation rates increased by 6% in northern districts in 2023.";
-    }, 1000);
+  if (!query) {
+    resultBox.textContent = 'Enter a question to continue.';
     return;
   }
 
+  resultBox.textContent = 'Loading...';
+
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+    const res = await fetch('/api/search', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: query }] }]
-      })
+      body: JSON.stringify({ query })
     });
 
     const data = await res.json();
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No answer found.";
-    resultBox.innerHTML = text;
+
+    if (!res.ok) {
+      throw new Error(data?.error || 'Request failed.');
+    }
+
+    resultBox.textContent = data?.answer || 'No answer found.';
   } catch (err) {
-    resultBox.innerHTML = "Error fetching response. Please try again.";
+    resultBox.textContent = 'Unable to complete the request. Please try again.';
     console.error(err);
   }
 }
