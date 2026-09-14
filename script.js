@@ -29,3 +29,13 @@ async function runSearch() {
     console.error(err);
   }
 }
+
+const searchButton = document.getElementById('search-button');
+const queryInput = document.getElementById('query');
+
+searchButton.addEventListener('click', runSearch);
+queryInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    runSearch();
+  }
+});
